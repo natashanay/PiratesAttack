@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodingDojoPirates</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'attack_app/css/style.css' %}">    
+<!-- <script src="{% static 'attack_app/js/script.js' %}"></script> -->
+</head>
+<body>
+<!-- <img src="{% static 'attack_app/images/image.jpg' %}" /> -->
+<div class = "container" >
+    <div class= "nav_bar">
+        <div class="row">
+            <div class="col-6">
+                <h3>Welcome {{this_pirate_attacker.first_name}} {{this_pirate_attacker.last_name}}</h3>
+                <h5>You have been attacked {{sum_wounds}} number of times</h5>
+
+
+
+                <h1>LANDONS CODE: MYWOUNDS = {{ sum_wounds }}</h1>
+
+                <h2>LANDONS OTHER CODE:</h2>
+
+                {% for relationship in my_has_attacked_relationships %}
+                    <p>{{ relationship.attacker.first_name }} has attacked me {{ relationship.num_attacks }} times</p>
+                {% endfor %}
+
+            </div>
+
+            <div class="col-6">
+                <a href="/logout">Logout</a>
+                
+            </div>
+        </div>
+        <div class="row">           
+            <div class="col-6">
+                <table class = "table">
+                    <thead>People who have attacked you</thead>
+                      {% for pirate in my_attack_list %}
+                      <tr></tr>
+                     <td> {{ pirate.first_name }} {{ pirate.last_name }}</td>
+                    <td>{{number}} </td> 
+                      {% endfor %}
+
+                </table>  
+            </div>
+        </div>
+
+
+
+    </div>  
+
+    <div class="mid_Page">       
+        <div class="row">           
+            <div class="col-12">
+                <table class = "table">
+                    <thead>People who you may want to attack:</thead>
+                    <th> Name</th>
+                    <th>Alias</th>
+                    <th>Email Address</th>
+                    <th>Wounds Sustained History</th>
+                    <th>Action</th>
+                    <tr></tr>
+                      {% for pirate in other_pirates %}
+                      <tr></tr>
+                     <td> {{ pirate.first_name }} {{ pirate.last_name }}</td>
+                    <td> {{ pirate.alias }}</td}> 
+                    <td>{{ pirate.email }}</td> 
+                    <td>{{pirate.sum_wounds}}</td> 
+                    <td> <a href="create_attack/{{pirate.id}}">Attack!</a></td>
+                      {% endfor %}
+
+                </table>  
+             </div>
+         </div>
+
+         <div class="col-6">
+        </div>
+    </div>
+ 
+ 
+        <div class="row">
+            <div class="col-12">
+             
+             </div>
+         </div>
+ 
+ 
+        <div class="row">
+            <div class="col-6">
+            
+        </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+</body>
+</html>
